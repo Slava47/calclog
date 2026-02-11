@@ -195,7 +195,8 @@ class CalculatorApp(App):
                             solution_steps.append(f'x ≈ {numeric_val.real:.6f}')
                         else:
                             solution_steps.append(f'x ≈ {numeric_val:.6f}')
-                    except:
+                    except (ValueError, TypeError, AttributeError):
+                        # Не удалось вычислить численное значение
                         pass
                     solution_steps.append('')
             else:
@@ -217,7 +218,8 @@ class CalculatorApp(App):
                         else:
                             solution_steps.append('[color=#FF6600]Требуется дополнительная проверка[/color]')
                         solution_steps.append('')
-                    except:
+                    except (ValueError, TypeError, AttributeError):
+                        # Не удалось выполнить проверку решения
                         pass
             
             self.solution_output.text = '\n'.join(solution_steps)

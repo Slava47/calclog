@@ -74,7 +74,8 @@ def solve_equation_detailed(equation_text):
                         print(f"    x ≈ {numeric_val.real:.8f}")
                     else:
                         print(f"    x ≈ {numeric_val:.8f}")
-                except:
+                except (ValueError, TypeError, AttributeError):
+                    # Не удалось вычислить численное значение
                     pass
                 
                 # Проверка / Verification
@@ -86,7 +87,8 @@ def solve_equation_detailed(equation_text):
                     else:
                         print(f"    ? Проверка: требуется дополнительная проверка")
                         print(f"      ? Verification: additional check needed")
-                except:
+                except (ValueError, TypeError, AttributeError):
+                    # Не удалось выполнить проверку решения
                     pass
                 print()
         else:
